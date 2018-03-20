@@ -13,5 +13,41 @@
         </classes>
     </test>
 
+    <test name="Create New Order [Remote-Chrome]" >
+        <parameter name="selenium.browser" value="remote-chrome" />
+        <parameter name="selenium.grid" value="http://localhost:4444/wd/hub" />
+        <classes>
+            <class name="myproject.automation.hwlecture5.tests.PlaceOrderTest" />
+        </classes>
+    </test>
+<!--
+    <test name="Create New Order [Firefox]" >
+        <parameter name="selenium.browser" value="firefox" />
+        <parameter name="selenium.grid" value="http://localhost:4444/wd/hub" />
+        <classes>
+            <class name="myproject.automation.hwlecture5.tests.PlaceOrderTest" />
+        </classes>
+    </test>
+
+    <test name="Create New Order [IE]" >
+        <parameter name="selenium.browser" value="ie" />
+        <parameter name="selenium.grid" value="http://localhost:4444/wd/hub" />
+        <classes>
+            <class name="myproject.automation.hwlecture5.tests.PlaceOrderTest" />
+        </classes>
+    </test>
+-->
+    <test name="Create New Order [Mobile]" >
+        <parameter name="selenium.browser" value="mobile" />
+        <parameter name="selenium.grid" value="http://localhost:4444/wd/hub" />
+        <classes>
+            <class name="myproject.automation.hwlecture5.tests.PlaceOrderTest" />
+        </classes>
+    </test>
+
+
+
+
+
     <!--Configure tests for other browser types-->
 </suite>

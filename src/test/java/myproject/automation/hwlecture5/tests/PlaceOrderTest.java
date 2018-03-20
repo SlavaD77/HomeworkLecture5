@@ -16,9 +16,8 @@ public class PlaceOrderTest extends BaseTest {
         MainPage mainPage = new MainPage(driver);
 
         Boolean isThreeLineDisplayed = driver.findElement(mainPage.getThreeLineMenuLocator()).isDisplayed();
-        Boolean isMobileTest = isMobileTesting("chrome");
 
-        Assert.assertEquals(isThreeLineDisplayed, isMobileTest, "Website version do not match the type of test");
+        Assert.assertEquals((Boolean)isThreeLineDisplayed, (Boolean)isMobileTest, "Website version do not match the type of test");  //"Website version do not match the type of test"
     }
 
     @Test
