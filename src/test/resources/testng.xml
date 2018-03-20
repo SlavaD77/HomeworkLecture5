@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Products Management" verbose="1" >
+
+    <parameter name="storeAddress" value="http://prestashop-automation.qatestlab.com.ua/"/>
+    <parameter name="orderConfirmedText" value="ВАШ ЗАКАЗ ПОДТВЕРЖДЁН"/>
+
+    <test name="Create New Order [Chrome]" >
+        <parameter name="selenium.browser" value="chrome" />
+        <parameter name="selenium.grid" value="http://localhost:4444/wd/hub" />
+        <classes>
+            <class name="myproject.automation.hwlecture5.tests.PlaceOrderTest" />
+        </classes>
+    </test>
+
+    <!--Configure tests for other browser types-->
+</suite>
