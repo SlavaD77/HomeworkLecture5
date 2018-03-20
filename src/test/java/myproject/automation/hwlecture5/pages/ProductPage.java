@@ -18,6 +18,12 @@ public class ProductPage extends BasicPage {
         return productPriceLocator;
     }
 
+    private By btnProductDetailsLocator = By.cssSelector("a[href='#product-details']");
+
+    public void clickBtnProductDetails(){
+        driver.findElement(btnProductDetailsLocator).click();
+    }
+
     private By productQuantityLocator = By.cssSelector("div.product-quantities span");
     public By getProductQuantityLocator(){return productQuantityLocator; }
 

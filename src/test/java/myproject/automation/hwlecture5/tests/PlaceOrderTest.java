@@ -37,6 +37,8 @@ public class PlaceOrderTest extends BaseTest {
 
         ProductPage productPage = new ProductPage(driver);
 
+        productPage.clickBtnProductDetails();
+
         ProductData savedProduct = actions.getOpenedProductInfo();
 
         productPage.clickBtnAddToCart();
@@ -52,6 +54,18 @@ public class PlaceOrderTest extends BaseTest {
         orderPage.fillFirstName("John");
         orderPage.fillLastName("Dou");
         orderPage.fillEmail(GeneralActions.generateEmail());
+
+        orderPage.clickBtnContinue();
+
+        orderPage.fillAddress1("Test address");
+        orderPage.fillPostcode("12345");
+        orderPage.fillCity("MyCity");
+
+        orderPage.clickBtnConfirmAddresses();
+
+
+
+
         // open random product
 
         // save product parameters

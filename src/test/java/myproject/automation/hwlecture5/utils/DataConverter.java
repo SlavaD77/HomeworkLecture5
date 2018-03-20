@@ -25,7 +25,7 @@ public class DataConverter {
         CustomReporter.log("Parsing qty, label value:" + label);
         Matcher qtyMatcher = Pattern.compile("^(\\d*)").matcher(label);
         Assert.assertTrue(qtyMatcher.find(), "Unable to extract In Stock (quantity) value!");
-        return Integer.parseInt(qtyMatcher.group(1));
+        return Integer.parseInt(qtyMatcher.group(0));   //return Integer.parseInt(qtyMatcher.group(1));
     }
 
     /**
