@@ -35,6 +35,8 @@ public abstract class BaseTest {
     protected EventFiringWebDriver driver;
     protected GeneralActions actions;
     protected boolean isMobileTest;
+    protected WebDriverWait wait;
+
 
     /**
      * Prepares {@link WebDriver} instance with timeout and browser window configurations.
@@ -65,7 +67,7 @@ public abstract class BaseTest {
 
         actions = new GeneralActions(driver);
 
-        //wait = new WebDriverWait(driver, 5);
+        wait = new WebDriverWait(driver, 5);
     }
 
     /**
@@ -115,15 +117,11 @@ public abstract class BaseTest {
                 System.setProperty(
                         "webdriver.ie.driver",
                         new File(BaseTest.class.getResource("/IEDriverServer.exe").getFile()).getPath());
-                        //getResource("/IEDriverServer.exe"));
                 InternetExplorerDriver ieDriver;
-                InternetExplorerOptions options = new InternetExplorerOptions();
-/*                        .requireWindowFocus()
-                        .setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT)
-                        .enablePersistentHovering().destructivelyEnsureCleanSession();  */
-                options.setCapability(InternetExplorerDriver.NATIVE_EVENTS,false);
-                //options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-                ieDriver = new InternetExplorerDriver(options);
+                InternetExplorerOptions ieOptions = new InternetExplorerOptions()
+                        .destructivelyEnsureCleanSession();
+                ieOptions.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
+                ieDriver = new InternetExplorerDriver(ieOptions);
                 return ieDriver;
 
             case "remote-chrome":

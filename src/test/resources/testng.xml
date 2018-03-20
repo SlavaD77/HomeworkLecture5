@@ -12,7 +12,7 @@
             <class name="myproject.automation.hwlecture5.tests.PlaceOrderTest" />
         </classes>
     </test>
-
+<!--
     <test name="Create New Order [Remote-Chrome]" >
         <parameter name="selenium.browser" value="remote-chrome" />
         <parameter name="selenium.grid" value="http://localhost:4444/wd/hub" />
@@ -20,6 +20,7 @@
             <class name="myproject.automation.hwlecture5.tests.PlaceOrderTest" />
         </classes>
     </test>
+    -->
 <!--
     <test name="Create New Order [Firefox]" >
         <parameter name="selenium.browser" value="firefox" />
@@ -37,6 +38,7 @@
         </classes>
     </test>
 -->
+    <!--
     <test name="Create New Order [Mobile]" >
         <parameter name="selenium.browser" value="mobile" />
         <parameter name="selenium.grid" value="http://localhost:4444/wd/hub" />
@@ -44,7 +46,7 @@
             <class name="myproject.automation.hwlecture5.tests.PlaceOrderTest" />
         </classes>
     </test>
-
+-->
 
 
 

@@ -1,5 +1,6 @@
 package myproject.automation.hwlecture5.utils;
 
+import myproject.automation.hwlecture5.utils.logging.CustomReporter;
 import org.testng.Assert;
 
 import java.text.DecimalFormat;
@@ -21,6 +22,7 @@ public class DataConverter {
      * @return Parsed numeric value.
      */
     public static int parseStockValue(String label) {
+        CustomReporter.log("Parsing qty, label value:" + label);
         Matcher qtyMatcher = Pattern.compile("^(\\d*)").matcher(label);
         Assert.assertTrue(qtyMatcher.find(), "Unable to extract In Stock (quantity) value!");
         return Integer.parseInt(qtyMatcher.group(1));
@@ -33,6 +35,7 @@ public class DataConverter {
      * @return Parsed float value of the price.
      */
     public static float parsePriceValue(String label) {
+        CustomReporter.log("Parsing price, label value: " + label);
         Matcher priceMatcher = Pattern.compile("^(.*) ₴$").matcher(label);
         Assert.assertTrue(priceMatcher.find(), "Unable to extract price value!");
 

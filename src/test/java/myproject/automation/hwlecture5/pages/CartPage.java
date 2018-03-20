@@ -17,4 +17,11 @@ public class CartPage extends BasicPage {
     private By productPriceLocator = By.cssSelector("span.product-price");
     public By getProductPriceLocator() {return productPriceLocator;}
 
+    private By btnProceedToOrderLocator = By.cssSelector("div.checkout a");  //div.checkout.cart-detailed-actions.card-block a.btn.btn-primary
+    public  By getBtnProceedToOrderLocator(){return btnProceedToOrderLocator;}
+
+    public void clickBtnProceedToOrder(){
+        driver.findElement(getBtnProceedToOrderLocator()).click();
+    }
+
 }
