@@ -50,9 +50,11 @@ public class GeneralActions {
         String name = driver.findElement(productPage.getProductNameLocator()).getText();
         String strPrice = driver.findElement(productPage.getProductPriceLocator()).getText();
         String strQty = driver.findElement(productPage.getProductQuantityLocator()).getText();
+        CustomReporter.log("ExtractedInfo: " + name + " " + " " + strPrice + " " + strQty);
 
-        int stockValue = DataConverter.parseStockValue(strQty);
         float price = DataConverter.parsePriceValue(strPrice);
+        int stockValue = DataConverter.parseStockValue(strQty);
+
 
         ProductData productData = new ProductData(name, stockValue, price);
         return productData;

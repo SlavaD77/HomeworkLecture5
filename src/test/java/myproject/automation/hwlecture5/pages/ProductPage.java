@@ -18,7 +18,7 @@ public class ProductPage extends BasicPage {
         return productPriceLocator;
     }
 
-    private By productQuantityLocator = By.cssSelector("div.product-quantities > span");
+    private By productQuantityLocator = By.cssSelector("div.product-quantities span");
     public By getProductQuantityLocator(){return productQuantityLocator; }
 
     private By btnAddToCartLocator =  By.cssSelector("button.add-to-cart");  //button.btn.btn-primary.add-to-cart
