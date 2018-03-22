@@ -1,11 +1,14 @@
 package myproject.automation.hwlecture5;
 
+import myproject.automation.hwlecture5.utils.logging.CustomReporter;
 import myproject.automation.hwlecture5.utils.logging.EventHandler;
+import org.apache.http.util.TextUtils;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.CapabilityType;
@@ -52,8 +55,8 @@ public abstract class BaseTest {
         // driver = new EventFiringWebDriver(....);
         // driver.register(new EventHandler());
         // ...
-
-        driver = new EventFiringWebDriver(getDriver(browser));
+        if (TextUtils.isEmpty(gridUrl)) {driver = new EventFiringWebDriver(getDriver(browser));}
+                else {driver = new EventFiringWebDriver(getDriver(browser, gridUrl));}
 
         driver.register(new EventHandler());
 
@@ -107,6 +110,7 @@ public abstract class BaseTest {
     private WebDriver getDriver(String browser) {
         switch (browser) {
             case "firefox":
+                System.out.println("Browser FF");
                 System.setProperty(
                         "webdriver.gecko.driver",
                         new File(BaseTest.class.getResource("/geckodriver.exe").getFile()).getPath());
@@ -124,14 +128,6 @@ public abstract class BaseTest {
                 ieDriver = new InternetExplorerDriver(ieOptions);
                 return ieDriver;
 
-            case "remote-chrome":
-                ChromeOptions optionsRemote = new ChromeOptions();
-                try {
-                    return new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), optionsRemote);
-                } catch (MalformedURLException e){
-                    e.printStackTrace();
-                }
-                return null;
             case "mobile":
                 System.setProperty(
                         "webdriver.chrome.driver",
@@ -148,9 +144,41 @@ public abstract class BaseTest {
                 System.setProperty(
                         "webdriver.chrome.driver",
                         new File(BaseTest.class.getResource("/chromedriver.exe").getFile()).getPath());
-                //getResource("/chromedriver.exe"));
                 return new ChromeDriver();
 
+        }
+    }
+
+    private WebDriver getDriver(String browser, String gridUrl)
+    {
+        switch (browser) {
+            case "firefox":
+                FirefoxOptions firefoxOptionsRemote = new FirefoxOptions();
+                try{
+                    return new RemoteWebDriver(new URL(gridUrl), firefoxOptionsRemote);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            case "ie":
+            case "internet explorer":
+                InternetExplorerOptions  internetExplorerOptions = new InternetExplorerOptions();
+                try{
+                    return new RemoteWebDriver(new URL(gridUrl), internetExplorerOptions);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                return null;
+
+            case "chrome":
+            default:
+                ChromeOptions optionsRemote = new ChromeOptions();
+                try {
+                    return new RemoteWebDriver(new URL(gridUrl), optionsRemote);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                return null;
         }
     }
 

@@ -46,7 +46,7 @@ public class DriverFactory {
      * @param gridUrl URL to Grid.
      * @return New instance of {@link RemoteWebDriver} object.
      */
-    public static WebDriver initDriver(String browser, String gridUrl) {
+    public static WebDriver initDriver(String browser, String gridUrl) {    //method getDriver in Base Class
         // TODO prepare capabilities for required browser and return RemoteWebDriver instance
         throw new UnsupportedOperationException();
     }

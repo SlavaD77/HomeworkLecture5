@@ -19,11 +19,12 @@ import java.util.regex.Pattern;
 
 public class PlaceOrderTest extends BaseTest {
 
+    @Parameters({"storeAddress"})
     @Test
-    public void checkSiteVersion() {
+    public void checkSiteVersion(String storeAddress) {
         // TODO open main page and validate website version  -- DONE
 
-        driver.navigate().to("http://prestashop-automation.qatestlab.com.ua/");
+        driver.navigate().to(storeAddress);
         MainPage mainPage = new MainPage(driver);
 
         Boolean isThreeLineDisplayed = driver.findElement(mainPage.getThreeLineMenuLocator()).isDisplayed();
