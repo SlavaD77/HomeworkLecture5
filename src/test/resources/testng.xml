@@ -3,7 +3,8 @@
 <suite name="Products Management" verbose="1" >
 
     <parameter name="storeAddress" value="http://prestashop-automation.qatestlab.com.ua/"/>
-    <parameter name="orderConfirmedText" value="ВАШ ЗАКАЗ ПОДТВЕРЖДЁН"/>
+    <parameter name="orderConfirmedText_RU" value="ВАШ ЗАКАЗ ПОДТВЕРЖДЁН"/>
+    <parameter name="orderConfirmedText_UA" value="ВАШЕ ЗАМОВЛЕННЯ ПІДТВЕРДЖЕНО"/>
 
     <test name="Create New Order [Chrome]" >
         <parameter name="selenium.browser" value="chrome" />
@@ -15,14 +16,6 @@
 
     <test name="Create New Order [Mobile]" >
         <parameter name="selenium.browser" value="mobile" />
-        <parameter name="selenium.grid" value="http://localhost:4444/wd/hub" />
-        <classes>
-            <class name="myproject.automation.hwlecture5.tests.PlaceOrderTest" />
-        </classes>
-    </test>
-
-    <test name="Create New Order [Remote-Chrome]" >
-        <parameter name="selenium.browser" value="remote-chrome" />
         <parameter name="selenium.grid" value="http://localhost:4444/wd/hub" />
         <classes>
             <class name="myproject.automation.hwlecture5.tests.PlaceOrderTest" />
@@ -44,6 +37,15 @@
             <class name="myproject.automation.hwlecture5.tests.PlaceOrderTest" />
         </classes>
     </test>
+
+    <test name="Create New Order [Remote-Chrome]" >
+        <parameter name="selenium.browser" value="remote-chrome" />
+        <parameter name="selenium.grid" value="http://localhost:4444/wd/hub" />
+        <classes>
+            <class name="myproject.automation.hwlecture5.tests.PlaceOrderTest" />
+        </classes>
+    </test>
+
 
     <!--Configure tests for other browser types-->
 </suite>

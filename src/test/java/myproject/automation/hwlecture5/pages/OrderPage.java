@@ -41,7 +41,7 @@ public class OrderPage extends BasicPage {
     private By postcodeInputLocator = By.cssSelector("input[name='postcode']");
     public By getPostcodeInputLocator(){return postcodeInputLocator;}
     public void fillPostcode(String postcode){
-        driver.findElement(getPostcodeInputLocator());
+        driver.findElement(getPostcodeInputLocator()).sendKeys(postcode);
     }
 
     private By cityInputLocator = By.cssSelector("input[name='city']");
@@ -50,13 +50,13 @@ public class OrderPage extends BasicPage {
         driver.findElement(getCityInputLocator()).sendKeys(city);
     }
 
-    private By btnConfirmAddressesLocator = By.cssSelector("button[name='confirm-addresses']");
+    private By btnConfirmAddressesLocator = By.name("confirm-addresses"); //By.cssSelector("button[name='confirm-addresses']");
     public By getBtnConfirmAddressesLocator(){return btnConfirmAddressesLocator;}
     public void clickBtnConfirmAddresses(){
         driver.findElement(getBtnConfirmAddressesLocator()).click();
     }
 
-    private By btnConfirmDeliveryOptionsLocator = By.cssSelector("button[name='confirmDeliveryOption']");
+    private By btnConfirmDeliveryOptionsLocator = By.name("confirmDeliveryOption");//By.cssSelector("button[name='confirmDeliveryOption']");
     public By getBtnConfirmDeliveryOptionsLocator(){return btnConfirmDeliveryOptionsLocator;}
     public void clickBtnConfirmDeliveryOpt(){
         driver.findElement(getBtnConfirmDeliveryOptionsLocator()).click();

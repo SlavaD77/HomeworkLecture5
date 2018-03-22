@@ -8,6 +8,9 @@ public class CartPage extends BasicPage {
         this.driver = driver;
     }
 
+    private By liCartItemLocator = By.cssSelector("li.cart-item");
+    public By getLiCartItemLocator(){return liCartItemLocator;}
+
     private By imgProductLocator = By.cssSelector("span.product-image");
     public By getImgProductLocator() {return imgProductLocator;}
 

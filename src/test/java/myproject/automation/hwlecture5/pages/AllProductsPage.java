@@ -29,5 +29,4 @@ public class AllProductsPage extends BasicPage {
     public boolean isNextProductsEnabled(){
         return !(driver.findElements(this.getNextProductsLinkEnabledLocator()).isEmpty());
     }
-
 }

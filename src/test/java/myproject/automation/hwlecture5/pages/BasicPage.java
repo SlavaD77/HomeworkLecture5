@@ -28,4 +28,8 @@ public abstract class BasicPage {
     public void clickElementWithJavaScript(WebElement element){
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
+
+    public String getTextWithJavaScript(WebElement element){
+        return (String)((JavascriptExecutor)driver).executeScript("return arguments[0].textContent",element);
+    }
 }

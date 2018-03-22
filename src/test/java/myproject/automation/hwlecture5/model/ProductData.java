@@ -9,12 +9,16 @@ public class ProductData {
     private String name;
     private int qty;
     private float price;
+    private String linkText;
 
     public ProductData(String name, int qty, float price) {
         this.name = name;
         this.qty = qty;
         this.price = price;
     }
+
+    public String getLinkText(){return linkText;}
+    public void setLinkText(String linkText){this.linkText = linkText;}
 
     public String getName() {
         return name;

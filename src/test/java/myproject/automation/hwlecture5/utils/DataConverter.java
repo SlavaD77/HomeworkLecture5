@@ -23,7 +23,7 @@ public class DataConverter {
      */
     public static int parseStockValue(String label) {
         CustomReporter.log("Parsing qty, label value:" + label);
-        Matcher qtyMatcher = Pattern.compile("^(\\d*)").matcher(label);
+        Matcher qtyMatcher = Pattern.compile("\\d+").matcher(label);
         Assert.assertTrue(qtyMatcher.find(), "Unable to extract In Stock (quantity) value!");
         return Integer.parseInt(qtyMatcher.group(0));   //return Integer.parseInt(qtyMatcher.group(1));
     }
@@ -36,13 +36,13 @@ public class DataConverter {
      */
     public static float parsePriceValue(String label) {
         CustomReporter.log("Parsing price, label value: " + label);
-        Matcher priceMatcher = Pattern.compile("^(.*) ₴$").matcher(label);
+        Matcher priceMatcher = Pattern.compile("^\\d+,\\d\\d").matcher(label);   //"^(.*) ₴$"
         Assert.assertTrue(priceMatcher.find(), "Unable to extract price value!");
 
         try {
             DecimalFormatSymbols separators = new DecimalFormatSymbols();
             separators.setDecimalSeparator(',');
-            return new DecimalFormat("#0.00", separators).parse(priceMatcher.group(1)).floatValue();
+            return new DecimalFormat("#0.00", separators).parse(priceMatcher.group(0)).floatValue();
         } catch (ParseException e) {
             throw  new RuntimeException(e);
         }
